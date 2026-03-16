@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services | Zeeti</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-dark: #000000;
+            --text-light: #FFFFFF;
+            --text-muted: #888888;
+            --zeeti-yellow: #FF9900; 
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+            transition: color 0.3s ease, background-color 0.3s ease;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--text-light);
+            text-decoration: none;
+        }
+
+        .logo span { color: var(--zeeti-yellow); }
+
+        nav { display: flex; gap: 25px; }
+        nav a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+        }
+        nav a:hover, nav a.active { color: var(--zeeti-yellow); }
+
+        .page-header { padding: 80px 5% 40px 5%; text-align: center; }
+        .page-header h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            color: var(--zeeti-yellow);
+            margin-bottom: 10px;
+        }
+        .page-header p { color: var(--text-muted); max-width: 600px; margin: 0 auto; font-size: 1.1rem; }
+
+        .services-grid {
+            flex-grow: 1;
+            padding: 0 5% 80px 5%;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .service-card {
+            background-color: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+        .service-card:hover { transform: translateY(-5px); border-color: var(--zeeti-yellow); }
+        .service-card h2 { font-size: 1.5rem; margin-bottom: 15px; color: var(--text-light); }
+        .service-card p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 20px; }
+        .service-card ul { list-style: none; }
+        .service-card ul li { margin-bottom: 10px; font-size: 0.9rem; color: #CCCCCC; display: flex; align-items: center; }
+        .service-card ul li::before { content: '→'; color: var(--zeeti-yellow); margin-right: 10px; font-weight: bold; }
+
+        footer {
+            padding: 30px 5%;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .footer-links { display: flex; gap: 20px; }
+        .footer-links a { color: var(--text-muted); text-decoration: none; font-size: 0.8rem; transition: color 0.3s ease; }
+        .footer-links a:hover { color: var(--text-light); }
+        .copyright { color: var(--text-muted); font-size: 0.8rem; }
+        
+        #easter-egg-trigger { cursor: crosshair; color: var(--text-light); font-weight: 800; transition: text-shadow 0.3s ease; }
+        #easter-egg-trigger:hover { color: var(--zeeti-yellow); text-shadow: 0 0 8px var(--zeeti-yellow); }
+
+        @media (max-width: 768px) {
+            header { flex-direction: column; gap: 15px; }
+            .page-header { padding-top: 40px; padding-bottom: 30px; }
+            .services-grid { grid-template-columns: 1fr; gap: 20px; }
+            .service-card { padding: 30px 20px; }
+            footer { flex-direction: column; text-align: center; padding-bottom: 80px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="index.html" class="logo">Zee<span>ti</span></a>
+        <nav>
+            <a href="services.html" class="active">Services</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+
+    <section class="page-header">
+        <h1>Services.</h1>
+        <p>Strategic deployment of digital assets. No generic templates.</p>
+    </section>
+
+    <section class="services-grid">
+        <div class="service-card">
+            <h2>Brand Identity</h2>
+            <p>Complete visual architecture to differentiate you in saturated markets.</p>
+            <ul>
+                <li>Logo & Mark Generation</li>
+                <li>Color & Typography Systems</li>
+                <li>Brand Guidelines</li>
+            </ul>
+        </div>
+        <div class="service-card">
+            <h2>Web Development</h2>
+            <p>High-performance, custom-coded digital infrastructure.</p>
+            <ul>
+                <li>Landing Pages</li>
+                <li>E-Commerce Deployment</li>
+                <li>Responsive UI/UX</li>
+            </ul>
+        </div>
+        <div class="service-card">
+            <h2>Digital Strategy</h2>
+            <p>Roadmaps designed for conversion, scaling, and operational efficiency.</p>
+            <ul>
+                <li>SEO Architecture</li>
+                <li>Copywriting & Tone</li>
+                <li>System Integrations</li>
+            </ul>
+        </div>
+    </section>
+
+    <footer>
+        <div class="copyright">
+            &copy; 2026 <span id="easter-egg-trigger">Zeeti</span>. All rights reserved.
+        </div>
+        <div class="footer-links">
+            <a href="privacy-policy.html">Privacy Policy</a>
+            <a href="terms-of-service.html">Terms of Service</a>
+            <a href="contact.html">Contact</a>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('easter-egg-trigger').addEventListener('click', function() {
+            if (document.getElementById('override-terminal')) return;
+            const style = document.createElement('style');
+            style.id = 'override-styles';
+            style.innerHTML = `
+                @keyframes glitch-shake {
+                    0% { transform: translate(2px, 1px) rotate(0deg); filter: invert(0); }
+                    20% { transform: translate(-3px, 0px) rotate(1deg); filter: invert(1); }
+                    40% { transform: translate(1px, -2px) rotate(-1deg); filter: invert(0); }
+                    60% { transform: translate(-3px, 1px) rotate(0deg); filter: invert(1); }
+                    80% { transform: translate(2px, 2px) rotate(1deg); filter: invert(0); }
+                    100% { transform: translate(0px, 0px) rotate(0deg); filter: invert(0); }
+                }
+                body.glitching { animation: glitch-shake 0.4s cubic-bezier(.36,.07,.19,.97) both; overflow: hidden; }
+                #override-terminal {
+                    position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+                    background-color: #050505; z-index: 99999; display: flex; flex-direction: column;
+                    justify-content: center; padding: 5%; font-family: 'Courier New', Courier, monospace;
+                    color: var(--zeeti-yellow); font-size: clamp(1rem, 4vw, 2rem); font-weight: bold;
+                    text-transform: uppercase; box-shadow: inset 0 0 100px rgba(255, 153, 0, 0.1);
+                }
+                .term-line { opacity: 0; margin-bottom: 15px; text-shadow: 0 0 5px var(--zeeti-yellow); }
+                .line-1 { animation: showLine 0.1s 0.5s forwards; }
+                .line-2 { animation: showLine 0.1s 1.2s forwards; }
+                .line-3 { animation: showLine 0.1s 1.8s forwards; color: #00FF41; text-shadow: 0 0 5px #00FF41; }
+                .line-4 { animation: showLine 0.1s 2.6s forwards; }
+                .cursor { display: inline-block; width: 15px; height: clamp(1rem, 4vw, 2rem); background-color: var(--zeeti-yellow); animation: blink 0.8s infinite; vertical-align: bottom; margin-left: 10px; }
+                @keyframes showLine { to { opacity: 1; } }
+                @keyframes blink { 0%, 49% { opacity: 1; } 50%, 100% { opacity: 0; } }
+            `;
+            document.head.appendChild(style);
+            document.body.classList.add('glitching');
+            setTimeout(() => {
+                const terminal = document.createElement('div');
+                terminal.id = 'override-terminal';
+                terminal.innerHTML = `
+                    <div class="term-line line-1">> INITIATING TACTICAL OVERRIDE...</div>
+                    <div class="term-line line-2">> PURGING GENERIC PROTOCOLS...</div>
+                    <div class="term-line line-3">> DIGITAL ARCHITECTURE SECURED.</div>
+                    <div class="term-line line-4">> INFRASTRUCTURE DEPLOYED.<span class="cursor"></span></div>
+                `;
+                document.body.appendChild(terminal);
+                document.body.classList.remove('glitching'); 
+                setTimeout(() => {
+                    document.body.classList.add('glitching'); 
+                    setTimeout(() => {
+                        document.body.removeChild(terminal);
+                        document.head.removeChild(style);
+                        document.body.classList.remove('glitching');
+                    }, 300);
+                }, 4500); 
+            }, 400); 
+        });
+    </script>
+</body>
+</html>
