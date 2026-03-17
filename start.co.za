@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Start | Zeeti</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-dark: #050505;
+            --text-light: #FFFFFF;
+            --text-muted: #888888;
+            --zeeti-yellow: #FF9900; 
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        body {
+            background: radial-gradient(circle at 50% 0%, #1a1a1a 0%, var(--bg-dark) 70%);
+            color: var(--text-light);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            padding: 60px 5%;
+            overflow-x: hidden;
+        }
+
+        .profile {
+            text-align: center;
+            margin-bottom: 50px;
+            z-index: 10;
+        }
+
+        .logo {
+            font-size: 3.5rem;
+            font-weight: 800;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            text-decoration: none;
+            color: var(--text-light);
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .logo span { color: var(--zeeti-yellow); }
+
+        .profile p {
+            color: var(--text-muted);
+            margin-top: 10px;
+            font-size: 0.95rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-weight: 500;
+        }
+
+        .links-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            width: 100%;
+            max-width: 450px;
+            z-index: 10;
+        }
+
+        .link-btn {
+            display: block;
+            background-color: rgba(255, 255, 255, 0.03);
+            color: var(--text-light);
+            text-decoration: none;
+            padding: 22px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            font-weight: 800;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            border-radius: 6px;
+            backdrop-filter: blur(10px);
+        }
+
+        .link-btn:hover {
+            border-color: var(--zeeti-yellow);
+            color: var(--zeeti-yellow);
+            transform: translateY(-4px);
+            background-color: rgba(255, 153, 0, 0.05);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .link-btn.primary {
+            background-color: var(--zeeti-yellow);
+            color: #000000;
+            border: none;
+            box-shadow: 0 4px 15px rgba(255, 153, 0, 0.2);
+        }
+
+        .link-btn.primary:hover {
+            background-color: transparent;
+            color: var(--zeeti-yellow);
+            border: 1px solid var(--zeeti-yellow);
+        }
+
+        footer {
+            margin-top: auto;
+            padding-top: 60px;
+            text-align: center;
+        }
+
+        .copyright {
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+        }
+
+        @keyframes hardcore-glitch {
+            0% { transform: translate(0) }
+            20% { transform: translate(-3px, 3px) }
+            40% { transform: translate(-3px, -3px) }
+            60% { transform: translate(3px, 3px) }
+            80% { transform: translate(3px, -3px) }
+            100% { transform: translate(0) }
+        }
+
+        .glitching {
+            animation: hardcore-glitch 0.1s linear 5;
+            filter: invert(1);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="profile">
+        <a href="#" class="logo" id="egg-trigger">Zee<span>ti</span></a>
+        <p id="subtext">Digital Architecture</p>
+    </div>
+
+    <div class="links-container">
+        <a href="index.html" class="link-btn">Official Website</a>
+        <a href="services.html" class="link-btn">View Services</a>
+        <a href="contact.html" class="link-btn">Inquiry Form</a>
+        <a href="https://wa.me/27834315252?text=Hi%20Zeeti,%20I'd%20like%20to%20start%20a%20project." class="link-btn primary">WhatsApp Me Direct</a>
+    </div>
+
+    <footer>
+        <div class="copyright">
+            &copy; 2026 ZEETI. All rights reserved.
+        </div>
+    </footer>
+
+    <script>
+        let tapCount = 0;
+        let tapTimer;
+
+        document.getElementById('egg-trigger').addEventListener('click', function(e) {
+            e.preventDefault();
+            tapCount++;
+            
+            clearTimeout(tapTimer);
+            tapTimer = setTimeout(() => { tapCount = 0; }, 1000); 
+
+            if (tapCount === 3) {
+                document.body.classList.add('glitching');
+                const subtext = document.getElementById('subtext');
+                const originalText = subtext.innerText;
+                
+                setTimeout(() => {
+                    document.body.classList.remove('glitching');
+                    subtext.innerHTML = "<span style='color:#FF9900; font-weight:800; letter-spacing: 4px;'>> SYSTEM SECURED.</span>";
+                }, 500);
+
+                setTimeout(() => {
+                    subtext.innerText = originalText;
+                    tapCount = 0;
+                }, 3500);
+            }
+        });
+    </script>
+
+</body>
+</html>
