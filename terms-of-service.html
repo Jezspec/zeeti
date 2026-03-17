@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Service | Zeeti</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-dark: #000000;
+            --text-light: #FFFFFF;
+            --text-muted: #888888;
+            --zeeti-yellow: #FF9900; 
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; transition: color 0.3s ease, background-color 0.3s ease; }
+
+        body { background-color: var(--bg-dark); color: var(--text-light); line-height: 1.6; display: flex; flex-direction: column; min-height: 100vh; }
+
+        header { display: flex; justify-content: space-between; align-items: center; padding: 20px 5%; border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+        .logo { font-size: 1.8rem; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: var(--text-light); text-decoration: none; }
+        .logo span { color: var(--zeeti-yellow); }
+
+        nav { display: flex; gap: 25px; }
+        nav a { color: var(--text-light); text-decoration: none; font-weight: 500; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; transition: color 0.3s ease; }
+        nav a:hover { color: var(--zeeti-yellow); }
+
+        .legal-container { flex-grow: 1; padding: 80px 5%; max-width: 800px; margin: 0 auto; width: 100%; }
+        .legal-header { margin-bottom: 50px; }
+        .legal-header h1 { font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 800; color: var(--zeeti-yellow); margin-bottom: 10px; }
+        
+        .legal-content h2 { color: var(--text-light); font-size: 1.5rem; margin-top: 40px; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px; border-bottom: 1px solid rgba(255, 255, 255, 0.1); padding-bottom: 10px;}
+        .legal-content p { color: #CCCCCC; margin-bottom: 20px; font-weight: 300; }
+        .legal-content ul { color: #CCCCCC; margin-bottom: 20px; padding-left: 20px; font-weight: 300; }
+        .legal-content li { margin-bottom: 10px; }
+        .legal-content strong { color: var(--text-light); font-weight: 500; }
+
+        footer { padding: 30px 5%; border-top: 1px solid rgba(255, 255, 255, 0.1); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
+        .footer-links { display: flex; gap: 20px; }
+        .footer-links a { color: var(--text-muted); text-decoration: none; font-size: 0.8rem; transition: color 0.3s ease; }
+        .footer-links a:hover { color: var(--text-light); }
+        .copyright { color: var(--text-muted); font-size: 0.8rem; }
+        
+        #easter-egg-trigger { cursor: crosshair; color: var(--text-light); font-weight: 800; transition: text-shadow 0.3s ease;}
+        #easter-egg-trigger:hover { color: var(--zeeti-yellow); text-shadow: 0 0 8px var(--zeeti-yellow); }
+
+        @media (max-width: 768px) {
+            header { flex-direction: column; gap: 15px; }
+            .legal-container { padding-top: 40px; padding-bottom: 40px; }
+            footer { flex-direction: column; text-align: center; padding-bottom: 80px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="index.html" class="logo">Zee<span>ti</span></a>
+        <nav>
+            <a href="services.html">Services</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+
+    <section class="legal-container">
+        <div class="legal-header">
+            <h1>Terms of Service.</h1>
+        </div>
+
+        <div class="legal-content">
+            <p><strong>Effective Date:</strong> March 2026</p>
+
+            <h2>1. Rules of Engagement</h2>
+            <p>By engaging Zeeti, you agree to these operational terms. We provide high-performance digital architecture, branding, and strategic deployment. If you require endless hand-holding or bureaucratic bloat, we are not the agency for you.</p>
+
+            <h2>2. Project Execution</h2>
+            <p>We build according to the target specifications defined during intake. 
+            <ul>
+                <li><strong>Scope:</strong> Deliverables are locked in upon project initiation. Scope creep will be met with revised financial terms.</li>
+                <li><strong>Timelines:</strong> We hit our deadlines. We expect you to hit yours regarding feedback and asset delivery. Delays on your end delay the deployment.</li>
+            </ul></p>
+
+            <h2>3. Financial Architecture</h2>
+            <p>Execution requires capital.</p>
+            <ul>
+                <li>Standard projects require a secure deposit prior to the commencement of any architectural work.</li>
+                <li>Final deployment of digital assets or code occurs only upon complete settlement of the final invoice.</li>
+            </ul>
+
+            <h2>4. Liability & Performance</h2>
+            <p>Zeeti builds the infrastructure; you are responsible for how you drive it. We are not liable for direct, indirect, or consequential damages resulting from the use of the assets we provide, nor are we responsible for third-party hosting failures or external market conditions.</p>
+
+            <h2>5. Intellectual Property</h2>
+            <p>Upon final payment, the deployed digital assets (logos, custom code, strategic documents) transfer to your ownership. Zeeti reserves the right to utilize the completed architecture in our archive and portfolio unless secured by a specific NDA protocol.</p>
+
+        </div>
+    </section>
+
+    <footer>
+        <div class="copyright">
+            &copy; 2026 <span id="easter-egg-trigger">Zeeti</span>. All rights reserved.
+        </div>
+        <div class="footer-links">
+            <a href="privacy-policy.html">Privacy Policy</a>
+            <a href="terms-of-service.html">Terms of Service</a>
+            <a href="contact.html">Contact</a>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('easter-egg-trigger').addEventListener('click', function() {
+            if (document.getElementById('override-terminal')) return;
+            const style = document.createElement('style'); style.id = 'override-styles';
+            style.innerHTML = `@keyframes glitch-shake { 0% { transform: translate(2px, 1px) rotate(0deg); filter: invert(0); } 20% { transform: translate(-3px, 0px) rotate(1deg); filter: invert(1); } 40% { transform: translate(1px, -2px) rotate(-1deg); filter: invert(0); } 60% { transform: translate(-3px, 1px) rotate(0deg); filter: invert(1); } 80% { transform: translate(2px, 2px) rotate(1deg); filter: invert(0); } 100% { transform: translate(0px, 0px) rotate(0deg); filter: invert(0); } } body.glitching { animation: glitch-shake 0.4s cubic-bezier(.36,.07,.19,.97) both; overflow: hidden; } #override-terminal { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: #050505; z-index: 99999; display: flex; flex-direction: column; justify-content: center; padding: 5%; font-family: 'Courier New', Courier, monospace; color: var(--zeeti-yellow); font-size: clamp(1rem, 4vw, 2rem); font-weight: bold; text-transform: uppercase; box-shadow: inset 0 0 100px rgba(255, 153, 0, 0.1); } .term-line { opacity: 0; margin-bottom: 15px; text-shadow: 0 0 5px var(--zeeti-yellow); } .line-1 { animation: showLine 0.1s 0.5s forwards; } .line-2 { animation: showLine 0.1s 1.2s forwards; } .line-3 { animation: showLine 0.1s 1.8s forwards; color: #00FF41; text-shadow: 0 0 5px #00FF41; } .line-4 { animation: showLine 0.1s 2.6s forwards; } .cursor { display: inline-block; width: 15px; height: clamp(1rem, 4vw, 2rem); background-color: var(--zeeti-yellow); animation: blink 0.8s infinite; vertical-align: bottom; margin-left: 10px; } @keyframes showLine { to { opacity: 1; } } @keyframes blink { 0%, 49% { opacity: 1; } 50%, 100% { opacity: 0; } }`;
+            document.head.appendChild(style); document.body.classList.add('glitching');
+            setTimeout(() => {
+                const terminal = document.createElement('div'); terminal.id = 'override-terminal';
+                terminal.innerHTML = `<div class="term-line line-1">> INITIATING TACTICAL OVERRIDE...</div><div class="term-line line-2">> PURGING GENERIC PROTOCOLS...</div><div class="term-line line-3">> DIGITAL ARCHITECTURE SECURED.</div><div class="term-line line-4">> INFRASTRUCTURE DEPLOYED.<span class="cursor"></span></div>`;
+                document.body.appendChild(terminal); document.body.classList.remove('glitching'); 
+                setTimeout(() => { document.body.classList.add('glitching'); setTimeout(() => { document.body.removeChild(terminal); document.head.removeChild(style); document.body.classList.remove('glitching'); }, 300); }, 4500); 
+            }, 400); 
+        });
+    </script>
+</body>
+</html>
