@@ -29,14 +29,15 @@
             display: flex;
             flex-direction: column;
             min-height: 100vh;
+            overflow-x: hidden;
         }
 
         header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 5%;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 25px 5%;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
 
         .logo {
@@ -50,154 +51,281 @@
 
         .logo span { color: var(--zeeti-yellow); }
 
-        nav { display: flex; gap: 25px; }
+        nav { display: flex; gap: 30px; }
 
         nav a {
             color: var(--text-light);
             text-decoration: none;
             font-weight: 500;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: color 0.3s ease;
+            letter-spacing: 1.5px;
+            position: relative;
+            padding-bottom: 5px;
         }
 
-        nav a:hover { color: var(--zeeti-yellow); }
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--zeeti-yellow);
+            transition: width 0.3s ease;
+        }
 
-        .hero {
-            flex-grow: 1; 
+        nav a:hover::after, nav a.active::after { width: 100%; }
+        nav a:hover, nav a.active { color: var(--zeeti-yellow); }
+
+        .contact-container {
+            flex-grow: 1;
+            padding: 80px 5%;
+            max-width: 1100px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .contact-header { margin-bottom: 60px; }
+        .contact-header h1 { 
+            font-size: clamp(3rem, 6vw, 5rem); 
+            font-weight: 800; 
+            color: var(--zeeti-yellow); 
+            margin-bottom: 15px; 
+            line-height: 1.05;
+            letter-spacing: -2px;
+        }
+        .contact-header p { color: #AAAAAA; font-size: clamp(1.1rem, 2vw, 1.25rem); font-weight: 300; }
+
+        .contact-grid { display: grid; grid-template-columns: 1fr 1.5fr; gap: 60px; }
+        
+        .contact-info h2 { font-size: 1.1rem; color: var(--text-light); margin-bottom: 10px; text-transform: uppercase; letter-spacing: 1.5px; }
+        .contact-info p { color: #AAAAAA; margin-bottom: 40px; font-size: 1rem; font-weight: 300; }
+        .contact-info p strong { color: var(--zeeti-yellow); font-weight: 500; letter-spacing: 1px; }
+        .contact-info a { color: var(--text-light); text-decoration: none; transition: color 0.3s ease; }
+        .contact-info a:hover { color: var(--zeeti-yellow); }
+
+        form { display: flex; flex-direction: column; gap: 25px; }
+        
+        input, textarea {
+            background-color: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 18px 20px;
+            color: var(--text-light);
+            font-size: 1rem;
+            outline: none;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        input:focus, textarea:focus { 
+            border-color: var(--zeeti-yellow); 
+            background-color: rgba(255, 153, 0, 0.02); 
+            box-shadow: 0 0 15px rgba(255, 153, 0, 0.1);
+        }
+        
+        textarea { resize: vertical; min-height: 180px; }
+
+        #submit-btn {
+            background-color: var(--zeeti-yellow); 
+            color: #000; 
+            border: 2px solid var(--zeeti-yellow);
+            padding: 18px 40px; 
+            font-size: 0.9rem; 
+            font-weight: 800; 
+            text-transform: uppercase;
+            letter-spacing: 1.5px; 
+            cursor: pointer; 
+            align-self: flex-start;
+        }
+        
+        #submit-btn:hover { 
+            background-color: transparent; 
+            color: var(--zeeti-yellow); 
+            box-shadow: 0 0 15px rgba(255, 153, 0, 0.3);
+        }
+
+        footer {
+            padding: 40px 5%; border-top: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;
+        }
+        .footer-links { display: flex; gap: 20px; }
+        .footer-links a { color: var(--text-muted); text-decoration: none; font-size: 0.8rem; }
+        .footer-links a:hover { color: var(--text-light); }
+        .copyright { color: var(--text-muted); font-size: 0.8rem; }
+
+        #easter-egg-trigger { cursor: crosshair; color: var(--text-light); font-weight: 800; padding: 5px; }
+        #easter-egg-trigger:hover { color: var(--zeeti-yellow); text-shadow: 0 0 8px var(--zeeti-yellow); }
+
+        /* --- WhatsApp Floating Button CSS --- */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25d366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding: 40px 5%;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+            z-index: 9999;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        .contact-wrapper {
-            width: 100%;
-            max-width: 600px;
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.5);
         }
 
-        .hero h1 {
-            font-size: clamp(2.5rem, 6vw, 4rem);
-            font-weight: 800;
-            line-height: 1.1;
-            margin-bottom: 15px;
-            text-align: left;
+        .whatsapp-icon {
+            width: 35px;
+            height: 35px;
+            fill: white;
         }
 
-        .hero h1 .highlight-yellow { color: var(--zeeti-yellow); }
-
-        .hero p {
-            font-size: clamp(1rem, 2vw, 1.1rem);
-            font-weight: 300;
-            margin-bottom: 40px;
-            color: #CCCCCC;
-            text-align: left;
+        @media (max-width: 768px) {
+            header { flex-direction: column; gap: 20px; padding: 25px 5%; }
+            nav { gap: 20px; flex-wrap: wrap; justify-content: center; }
+            .contact-container { padding-top: 50px; padding-bottom: 50px; }
+            .contact-grid { grid-template-columns: 1fr; gap: 50px; }
+            #submit-btn { width: 100%; text-align: center; }
+            footer { flex-direction: column; text-align: center; padding-bottom: 40px; }
+            
+            /* Mobile adjustments for WhatsApp button */
+            .whatsapp-float {
+                bottom: 20px;
+                right: 20px;
+                width: 50px;
+                height: 50px;
+            }
+            .whatsapp-icon {
+                width: 28px;
+                height: 28px;
+            }
         }
-
-        /* Form Specific Styles for Zeeti Branding */
-        form {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-            width: 100%;
-        }
-
-        input, select, textarea {
-            background-color: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            color: var(--text-light);
-            padding: 18px;
-            font-size: 1rem;
-            border-radius: 4px;
-            outline: none;
-        }
-
-        input::placeholder, textarea::placeholder {
-            color: var(--text-muted);
-            text-transform: uppercase;
-            font-size: 0.85rem;
-            letter-spacing: 1px;
-        }
-
-        input:focus, select:focus, textarea:focus {
-            border-color: var(--zeeti-yellow);
-            background-color: rgba(255, 153, 0, 0.05);
-        }
-
-        select option {
-            background-color: var(--bg-dark);
-            color: var(--text-light);
-        }
-
-        .btn {
-            padding: 18px 30px;
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact | Zeeti</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;800&display=swap" rel="stylesheet">
-    <style>
-        :root { --bg-dark: #000000; --text-light: #FFFFFF; --text-muted: #888888; --zeeti-yellow: #FF9900; }
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease; }
-        body { background-color: var(--bg-dark); color: var(--text-light); line-height: 1.6; display: flex; flex-direction: column; min-height: 100vh; }
-        header { display: flex; justify-content: space-between; align-items: center; padding: 20px 5%; border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
-        .logo { font-size: 1.8rem; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: var(--text-light); text-decoration: none; }
-        .logo span { color: var(--zeeti-yellow); }
-        nav { display: flex; gap: 25px; }
-        nav a { color: var(--text-light); text-decoration: none; font-weight: 500; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; }
-        nav a:hover { color: var(--zeeti-yellow); }
-        .hero { flex-grow: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 40px 5%; }
-        .contact-wrapper { width: 100%; max-width: 600px; }
-        .hero h1 { font-size: clamp(2.5rem, 6vw, 4rem); font-weight: 800; line-height: 1.1; margin-bottom: 15px; user-select: none; }
-        .hero h1 .highlight-yellow { color: var(--zeeti-yellow); }
-        .hero p { font-size: clamp(1rem, 2vw, 1.1rem); font-weight: 300; margin-bottom: 40px; color: #CCCCCC; }
-        form { display: flex; flex-direction: column; gap: 20px; width: 100%; }
-        input, select, textarea { background-color: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.2); color: var(--text-light); padding: 18px; border-radius: 4px; outline: none; }
-        input:focus, select:focus, textarea:focus { border-color: var(--zeeti-yellow); background-color: rgba(255, 153, 0, 0.05); }
-        .btn-primary { background-color: var(--zeeti-yellow); color: #000; padding: 18px 30px; font-weight: 800; text-transform: uppercase; border: 2px solid var(--zeeti-yellow); cursor: pointer; border-radius: 4px; }
-        .btn-primary:hover { background-color: transparent; color: var(--zeeti-yellow); }
-        footer { padding: 30px 5%; border-top: 1px solid rgba(255, 255, 255, 0.1); display: flex; justify-content: space-between; align-items: center; }
-        .copyright { color: var(--text-muted); font-size: 0.8rem; }
-        .whatsapp-float { position: fixed; bottom: 30px; right: 30px; background-color: #25d366; color: white; border-radius: 50%; width: 60px; height: 60px; display: flex; justify-content: center; align-items: center; text-decoration: none; font-size: 30px; z-index: 1000; }
     </style>
 </head>
 <body>
+
     <header>
         <a href="index.html" class="logo">Zee<span>ti</span></a>
-        <nav><a href="services.html">Services</a><a href="about.html">About</a><a href="contact.html">Contact</a></nav>
+        <nav>
+            <a href="services.html">Services</a>
+            <a href="about.html">About</a>
+            <a href="contact.html" class="active">Contact</a>
+        </nav>
     </header>
-    <section class="hero">
-        <div class="contact-wrapper">
-            <h1 id="ghost-trigger">Initiate <span class="highlight-yellow">Contact.</span></h1>
-            <p>Transmit your project parameters below. Zero noise. Just execution.</p>
-            <form name="contact" method="POST" data-netlify="true" action="/">
-                <input type="text" name="name" placeholder="Your Name" required>
-                <input type="email" name="email" placeholder="Your Email" required>
-                <select name="service" required>
-                    <option value="" disabled selected>Select a Service...</option>
-                    <option value="architectural">Architectural Engineering</option>
-                    <option value="consultation">Creative Consultation</option>
-                    <option value="other">Other Inquiry</option>
-                </select>
-                <textarea name="message" rows="5" placeholder="Project details..." required></textarea>
-                <button type="submit" class="btn btn-primary">Transmit Request</button>
+
+    <section class="contact-container">
+        <div class="contact-header">
+            <h1>Comm Lines.</h1>
+            <p>Direct access. No intermediaries.</p>
+        </div>
+
+        <div class="contact-grid">
+            <div class="contact-info">
+                <h2>Base of Operations</h2>
+                <p>Western Cape, South Africa<br>Remote Deployment Global</p>
+
+                <h2>Status</h2>
+                <p><strong>Accepting New Projects</strong></p>
+
+                <h2>Direct Inquiries</h2>
+                <p><a href="mailto:inbound@zeeti.co.za">inbound@zeeti.co.za</a></p>
+            </div>
+
+            <form name="contact" method="POST" data-netlify="true">
+                <input type="text" name="name" placeholder="Name or Alias" required>
+                <input type="email" name="email" placeholder="Email Address" required>
+                <textarea name="message" placeholder="General Inquiry or Mission Brief" required></textarea>
+                <button type="submit" id="submit-btn">Transmit</button>
             </form>
         </div>
     </section>
-    <a href="https://wa.me/27834315252" class="whatsapp-float">💬</a>
-    <footer><div class="copyright">&copy; 2026 Zeeti. All rights reserved.</div></footer>
+
+    <footer>
+        <div class="copyright">
+            &copy; 2026 <span id="easter-egg-trigger">Zeeti</span>. All rights reserved.
+        </div>
+        <div class="footer-links">
+            <a href="privacy-policy.html">Privacy Policy</a>
+            <a href="terms-of-service.html">Terms of Service</a>
+            <a href="contact.html">Contact</a>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/27832533902" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Chat with Zeeti on WhatsApp">
+        <svg class="whatsapp-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+            <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zM223.9 414.7c-32.3 0-64-8.7-91.8-25l-6.6-3.9-68.1 17.8 18.2-66.4-4.3-6.9c-17.9-28.8-27.3-62.3-27.3-96.6 0-105.7 86-191.7 191.8-191.7 52.8 0 102.3 20.6 139.6 57.9 37.3 37.3 57.8 86.8 57.8 139.6 0 105.8-86.1 191.8-191.8 191.8zm104.5-142.9c-5.7-2.9-33.9-16.8-39.2-18.7-5.3-1.9-9.1-2.9-13.4 2.9-4.3 5.7-14.8 18.7-18.2 22.5-3.3 3.8-6.7 4.3-12.4 1.4-5.7-2.9-24.2-8.9-46.1-28.5-17.1-15.3-28.7-34.3-32-40-3.3-5.7-.4-8.8 2.5-11.7 2.6-2.6 5.7-6.7 8.6-10 2.9-3.3 3.8-5.7 5.7-9.5 1.9-3.8.9-7.1-.5-10-1.4-2.9-13.4-32.3-18.3-44.3-4.8-11.7-9.7-10.1-13.4-10.3-3.3-.2-7.1-.2-10.9-.2-3.8 0-10 1.4-15.3 7.1-5.3 5.7-20.1 19.6-20.1 47.8 0 28.2 20.6 55.6 23.4 59.4 2.9 3.8 40.5 61.8 98 85.5 13.7 5.7 24.4 9.1 32.8 11.6 13.8 4.4 26.4 3.8 36.3 2.3 11.1-1.7 33.9-13.9 38.7-27.2 4.8-13.4 4.8-24.8 3.3-27.2-1.4-2.4-5.2-3.8-10.9-6.7z"/>
+        </svg>
+    </a>
 
     <script>
-        const trigger = document.getElementById('ghost-trigger');
-        const originalText = trigger.innerHTML;
-        trigger.addEventListener('dblclick', function() {
-            trigger.style.color = '#FF9900';
-            trigger.innerText = "SIGNAL: +27 83 431 5252";
-            setTimeout(() => { trigger.innerHTML = originalText; trigger.style.color = ''; }, 1000);
+        document.addEventListener('DOMContentLoaded', function() {
+            const trigger = document.getElementById('easter-egg-trigger');
+            
+            // The characters the screen scrambles into (The Matrix set)
+            const chars = "日𝘎ﾘﾪアヰｳｴｵｶｷｸｹｺｻｼｽｾｿﾀﾁﾂﾃﾄﾅﾆﾇﾈﾉﾊﾋﾌﾍﾎﾏﾐﾑﾒﾓﾔﾕﾖﾗﾘﾙﾚﾛﾜﾝ23456789%&$#@";
+
+            // Recursive function to find all text nodes in the DOM
+            function getTextNodes(node) {
+                let textNodes = [];
+                if (node.nodeType === Node.TEXT_NODE && node.nodeValue.trim() !== "") {
+                    textNodes.push(node);
+                } else {
+                    for (let child of node.childNodes) {
+                        textNodes = textNodes.concat(getTextNodes(child));
+                    }
+                }
+                return textNodes;
+            }
+
+            // Scramble animation logic (targets specific text node and saves original value)
+            const originalText = new Map();
+
+            function scrambleNode(node, steps, final = false) {
+                if (!originalText.has(node)) {
+                    originalText.set(node, node.nodeValue);
+                }
+
+                if (final) {
+                    node.nodeValue = originalText.get(node);
+                    originalText.delete(node);
+                    return;
+                }
+
+                let original = originalText.get(node);
+                node.nodeValue = original.split("")
+                    .map(() => chars[Math.floor(Math.random() * chars.length)])
+                    .join("");
+            }
+
+            if (trigger) {
+                trigger.addEventListener('click', function() {
+                    // Prevent multiple instances
+                    if (document.body.classList.contains('system-scramble')) return;
+                    document.body.classList.add('system-scramble');
+
+                    // Capture all text nodes on the entire page
+                    const allNodes = getTextNodes(document.body);
+
+                    // --- Phase 1: Total Scramble ---
+                    // Multiple quick scrambles for dynamic cipher look
+                    let scrambleInterval = setInterval(() => {
+                        allNodes.forEach(node => scrambleNode(node, 1));
+                    }, 80);
+
+                    // --- Phase 2: Total Restoration ---
+                    // After 2 seconds, stop scrambling and revert everything back exactly Like nothing happened.
+                    setTimeout(() => {
+                        clearInterval(scrambleInterval);
+                        allNodes.forEach(node => scrambleNode(node, 1, true)); // Revert
+                        document.body.classList.remove('system-scramble');
+                    }, 2000); 
+                });
+            }
         });
     </script>
 </body>
